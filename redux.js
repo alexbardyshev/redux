@@ -1,3 +1,7 @@
+import amountReducer from "./store/amount.js";
+import goodsReducer from "./store/goods.js";
+import positionReducer from "./store/position.js";
+
 export function createStore(
     reducer,
     initialState = reducer(undefined, {})
@@ -17,4 +21,16 @@ export function createStore(
             callbacks.push(f);
         }
     }
+}
+
+export function combineReducers(reducers) {
+    return (state = {}, action) => {
+        const result = {};
+
+        for (const key in reducers) {
+            result[key] = reducers[key](state[key], action);
+        }
+
+        return result;
+    };
 }
