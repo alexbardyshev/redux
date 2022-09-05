@@ -1,8 +1,8 @@
 import {createStore} from "../redux.js";
 
-const ADD = 'ADD';
-const TAKE = 'TAKE';
-const CLEAR = 'CLEAR';
+const ADD = 'amount/ADD';
+const TAKE = 'amount/TAKE';
+const CLEAR = 'amount/CLEAR';
 
 export const actions = {
     add: (value) => ({ type: ADD, value }),

@@ -1,6 +1,6 @@
-const ADD = 'ADD';
-const TAKE = 'TAKE';
-const CLEAR = 'CLEAR';
+const ADD = 'goods/ADD';
+const TAKE = 'goods/TAKE';
+const CLEAR = 'goods/CLEAR';
 
 export const actions = {
     add: (good) => ({ type: ADD, good }),
