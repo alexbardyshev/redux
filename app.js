@@ -1,26 +1,21 @@
 import {createStore} from "./redux.js";
 import amountReducer, { actions as amountActions } from "./store/amount.js";
 import goodsReducer, { actions as goodsActions } from './store/goods.js'
+import positionReducer, {actions as positionActions } from "./store/position.js";
 
-const store = createStore(amountReducer)
-const store2 = createStore(goodsReducer)
+const store = createStore(positionReducer)
 
-store2.subscribe(() => {
-    console.log(store2.getState())
-})
-
+const cache = [];
 store.subscribe(() => {
-    console.log(store.getState())
+    cache.push(store.getState())
 })
 
-store.dispatch(amountActions.add(100));
-store.dispatch(amountActions.add(20));
-store.dispatch(amountActions.take(50));
-store.dispatch(amountActions.add(40));
-store.dispatch(amountActions.clear());
+store.dispatch(positionActions.moveRight());
+store.dispatch(positionActions.moveRight());
+store.dispatch(positionActions.moveRight());
+store.dispatch(positionActions.moveUp());
+store.dispatch(positionActions.moveUp());
+store.dispatch(positionActions.moveLeft());
+store.dispatch(positionActions.moveDown());
 
-store2.dispatch(goodsActions.add(100));
-store2.dispatch(goodsActions.add(20));
-store2.dispatch(goodsActions.take(100));
-store2.dispatch(goodsActions.add(40));
-store2.dispatch(goodsActions.clear());
+console.log(cache)
